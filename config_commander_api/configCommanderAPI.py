@@ -1,13 +1,14 @@
 import sys
 import os
 
-print(os.getenv('HOME'))
-print(os.getcwd())
-os.system('cd ..')
-print(os.getcwd())
-sys.path.insert(1, '/Users/Tony/GIT/python3-practice/paramiko/config_commander_api')
-sys.path.insert(2, '/Users/Tony/GIT/python3-practice/paramiko/models')
-sys.path.insert(3, '/Users/Tony/GIT/python3-practice/paramiko')
+cwd = os.getcwd()
+fmt_path = path.split('/')
+fmt_path.pop(-1)
+app_dir = ('/').join(fmt_path)
+
+sys.path.insert(1, os.getcwd())
+sys.path.insert(2, f'{app_dir}/models')
+sys.path.insert(3, app_dir)
 
 import models
 from configCommander import configCommander
