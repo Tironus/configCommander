@@ -3,6 +3,8 @@ import os
 
 print(os.getenv('HOME'))
 print(os.getcwd())
+os.system('cd ..')
+print(os.getcwd())
 sys.path.insert(1, '/Users/Tony/GIT/python3-practice/paramiko/config_commander_api')
 sys.path.insert(2, '/Users/Tony/GIT/python3-practice/paramiko/models')
 sys.path.insert(3, '/Users/Tony/GIT/python3-practice/paramiko')
