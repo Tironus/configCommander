@@ -32,7 +32,7 @@ class configCommander():
         cmds = cg.generateCommands()
         try:
             d.runCommands(cmds)
-        except Exception:
+        except Exception: # pylint: disable=broad-except
             return "device error", "failed", "failed to connect to device."
         for result in d.cmd_results:
             if d.cmd_results[result]['submit_config_result'] != 'success' or d.cmd_results[result]['device_accepted_result'] != 'success':
