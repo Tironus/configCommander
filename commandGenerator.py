@@ -1,7 +1,6 @@
 from jinja2 import Environment, FileSystemLoader
 from config_params import fortigate_config_params
 import os
-print(os.environ['HOME'])
 
 class commandGenerator():
     def __init__(self, config, config_type):
@@ -29,11 +28,19 @@ class commandGenerator():
 
     def generateCommands(self):
         home = os.environ['HOME']
+        prod_cfg_path = f"{home}/configCommander/command_templates/config"
+        prod_backout_path = f"{home}/configCommander/command_templates/backout"
         if self.config_type == 'configure':
-            template_path = f"{home}/configCommander/command_templates/config"
+            if os.path.exists(prod_cfg_path):
+                template_path = prod_cfg_path
+            else:
+                template_path = "/home/runner/work/configCommander/configCommander/config"
             template_name = f"{self.config['device']['device_type']}_commands.txt"
         elif self.config_type == 'backout':
-            template_path = f"{home}/configCommander/command_templates/backout"
+            if os.path.exists(prod_backout_path):
+                template_path = prod_backout_path
+            else:
+                template_path = "/home/runner/work/configCommander/configCommander/backout"
             template_name = f"{self.config['device']['device_type']}_backout_commands.txt"
         else:
             print(f'invalid config type: {self.config_type}')
