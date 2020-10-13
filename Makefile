@@ -6,9 +6,9 @@ test:
 	python -m pytest -vv --cov=tests tests/testCommandGenerator.py
 
 lint:
-	pylint --disable=R,C,E1120 paramiko/commandGenerator.py
-	pylint --disable=R,C,E1120 paramiko/configCommander.py
-	pylint --disable=R,C,E1120 paramiko/deviceCommander.py
+	pylint --disable=R,C,E1120 commandGenerator.py
+	pylint --disable=R,C,E1120 configCommander.py
+	pylint --disable=R,C,E1120 deviceCommander.py
 
 all:
 	install lint test
