@@ -1,4 +1,4 @@
 /.idea/workspace.xml
 *.idea
-/cc_venv/
+~/configCommander/cc_venv/
 .venv
