@@ -77,7 +77,3 @@ def test_generate_commands():
     testGenerator = commandGenerator(payload, 'configure')
     results = testGenerator.generateCommands()
     assert results is not []
-
-if __name__ == "__main__":
-    test_update_config_type()
-    test_generate_commands()

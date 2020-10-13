@@ -3,7 +3,7 @@ install:
 	pip install -r requirements.txt
 
 test:
-	python -m pytest -vv --cov=tests tests/testCommandGenerator.py
+	python -m pytest -vv --cov-report term-missing --cov=tests tests/testCommandGenerator.py
 
 lint:
 	pylint --disable=R,C,E1120 commandGenerator.py
