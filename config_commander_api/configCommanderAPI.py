@@ -2,7 +2,7 @@ import sys
 import os
 
 cwd = os.getcwd()
-fmt_path = path.split('/')
+fmt_path = cwd.split('/')
 fmt_path.pop(-1)
 app_dir = ('/').join(fmt_path)
 
