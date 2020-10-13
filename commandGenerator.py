@@ -27,26 +27,18 @@ class commandGenerator():
         self.commands = command_list
 
     def generateCommands(self):
-        home = os.environ['HOME']
-        prod_cfg_path = f"{home}/configCommander/command_templates/config"
-        prod_backout_path = f"{home}/configCommander/command_templates/backout"
+        cwd = os.getcwd()
+        prod_cfg_path = f"{cwd}/command_templates/config"
+        prod_backout_path = f"{cwd}/command_templates/backout"
         if self.config_type == 'configure':
-            if os.path.exists(prod_cfg_path):
-                template_path = prod_cfg_path
-            else:
-                template_path = "/home/runner/work/configCommander/configCommander/command_templates/config"
+            template_path = prod_cfg_path
             template_name = f"{self.config['device']['device_type']}_commands.txt"
         elif self.config_type == 'backout':
-            if os.path.exists(prod_backout_path):
-                template_path = prod_backout_path
-            else:
-                template_path = "/home/runner/work/configCommander/configCommander/command_templates/backout"
+            template_path = prod_backout_path
             template_name = f"{self.config['device']['device_type']}_backout_commands.txt"
         else:
             print(f'invalid config type: {self.config_type}')
 
-        print(template_path)
-        print(template_name)
         file_loader = FileSystemLoader(template_path)
         env = Environment(loader=file_loader)
         template = env.get_template(template_name)
