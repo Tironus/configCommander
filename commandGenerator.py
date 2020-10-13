@@ -28,13 +28,13 @@ class commandGenerator():
 
     def generateCommands(self):
         cwd = os.getcwd()
-        prod_cfg_path = f"{cwd}/command_templates/config"
-        prod_backout_path = f"{cwd}/command_templates/backout"
+        cfg_path = f"{cwd}/command_templates/config"
+        backout_path = f"{cwd}/command_templates/backout"
         if self.config_type == 'configure':
-            template_path = prod_cfg_path
+            template_path = cfg_path
             template_name = f"{self.config['device']['device_type']}_commands.txt"
         elif self.config_type == 'backout':
-            template_path = prod_backout_path
+            template_path = backout_path
             template_name = f"{self.config['device']['device_type']}_backout_commands.txt"
         else:
             print(f'invalid config type: {self.config_type}')
