@@ -34,13 +34,13 @@ class commandGenerator():
             if os.path.exists(prod_cfg_path):
                 template_path = prod_cfg_path
             else:
-                template_path = "/home/runner/work/configCommander/configCommander/config"
+                template_path = "/home/runner/work/configCommander/configCommander/command_templates/config"
             template_name = f"{self.config['device']['device_type']}_commands.txt"
         elif self.config_type == 'backout':
             if os.path.exists(prod_backout_path):
                 template_path = prod_backout_path
             else:
-                template_path = "/home/runner/work/configCommander/configCommander/backout"
+                template_path = "/home/runner/work/configCommander/configCommander/command_templates/backout"
             template_name = f"{self.config['device']['device_type']}_backout_commands.txt"
         else:
             print(f'invalid config type: {self.config_type}')
