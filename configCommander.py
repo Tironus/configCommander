@@ -32,8 +32,8 @@ class configCommander():
         cmds = cg.generateCommands()
         try:
             d.runCommands(cmds)
-        except TimeoutError:
-            return "Timeout", "failed", "failed to connect to device."
+        except Exception:
+            return "device error", "failed", "failed to connect to device."
         for result in d.cmd_results:
             if d.cmd_results[result]['submit_config_result'] != 'success' or d.cmd_results[result]['device_accepted_result'] != 'success':
                 cg.update_config_type('backout')

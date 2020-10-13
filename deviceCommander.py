@@ -42,7 +42,8 @@ class DeviceConfig():
     def runCommands(self, cmd_list):
         ssh_ctx = paramiko.SSHClient()
         ssh_ctx.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        ssh_ctx.connect(hostname=self.hostname, username=self.username, password=self.password, look_for_keys=False)
+        ssh_ctx.connect(
+            hostname=self.hostname, username=self.username, password=self.password, look_for_keys=False, timeout=10)
         device = cmd_object(self.hostname)
 
         for cmd in cmd_list:
