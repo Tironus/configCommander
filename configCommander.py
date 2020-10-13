@@ -1,13 +1,15 @@
 from deviceCommander import DeviceConfig
 from commandGenerator import commandGenerator
 import yaml
+import os
 
 class configCommander():
     def __init__(self, config):
         self.new_config = config
 
     def find_validation(self):
-        with open(r'device_yaml/device_yaml.yaml') as file:
+        cwd = os.getcwd()
+        with open(rf'{cwd}/device_yaml/device_yaml.yaml') as file:
             device_list = yaml.load(file, Loader=yaml.FullLoader)
 
         for device in device_list:
@@ -28,7 +30,10 @@ class configCommander():
 
         cg = commandGenerator(self.new_config, 'configure')
         cmds = cg.generateCommands()
-        d.runCommands(cmds)
+        try:
+            d.runCommands(cmds)
+        except TimeoutError:
+            return "Timeout", "failed", "failed to connect to device."
         for result in d.cmd_results:
             if d.cmd_results[result]['submit_config_result'] != 'success' or d.cmd_results[result]['device_accepted_result'] != 'success':
                 cg.update_config_type('backout')

@@ -3,3 +3,7 @@
   regex_validation: ".*(error|fail|illegal|MUST be set|Can't)"
   username: "admin"
   password: "admin"
+- device_type: "cisco-ios"
+  regex_validation: ".*(error|fail|illegal|MUST be set|Can't)"
+  username: "admin"
+  password: "admin"
