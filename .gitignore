@@ -2,3 +2,4 @@
 *.idea
 /cc_venv/*
 .venv
+.coverage
