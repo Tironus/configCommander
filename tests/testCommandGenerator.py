@@ -1,7 +1,3 @@
-import sys
-
-sys.path.append("/home/runner/work/python3-practice/python3-practice/paramiko/")
-
 from commandGenerator import commandGenerator
 
 payload = {
