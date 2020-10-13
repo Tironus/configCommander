@@ -6,12 +6,14 @@ pipeline {
 	}
 	stages {
 		stage('stage-1') {
-			echo "configCommander version $CONFIG_COMMANDER"
-			sh '''
-				source $HOME/cc_venv/bin/activate
-				cd APP_PATH
-				make test
-			'''
+			steps {
+				echo "configCommander version $CONFIG_COMMANDER"
+				sh '''
+					source $HOME/cc_venv/bin/activate
+					cd APP_PATH
+					make test
+				'''
+			}
 		}
 	}
 }
