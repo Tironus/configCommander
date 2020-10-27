@@ -10,11 +10,10 @@ pipeline {
 				echo "configCommander version $CONFIG_COMMANDER"
 				sh '''
 					pwd
-					ls
 					python3 --version
+					pip --version
 					python3 -m venv ./venv
 					source ./venv/bin/activate
-					pip --version
 					make install
 				'''
 			}
@@ -24,7 +23,6 @@ pipeline {
 				echo "configCommander version $CONFIG_COMMANDER"
 				sh '''
 					pwd
-					ls
 					python3 --version
 					source ./venv/bin/activate
 					make lint
@@ -36,7 +34,6 @@ pipeline {
 				echo "configCommander version $CONFIG_COMMANDER"
 				sh '''
 					pwd
-					ls
 					python3 --version
 					source ./venv/bin/activate
 					make test
