@@ -17,7 +17,7 @@ pipeline {
 					pip --version
 					/var/jenkins_home/workspace/configCommander_main/venv/bin/python3 -m pip install --upgrade pip
 					pip --version
-					pip install requirements.txt
+					pip install -r requirements.txt
 				'''
 			}
 		}
