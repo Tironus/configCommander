@@ -5,16 +5,16 @@ pipeline {
 		APP_PATH="$HOME/configCommander"
 	}
 	stages {
-		stage('stage-1') {
+		stage('build') {
 			steps {
 				echo "configCommander version $CONFIG_COMMANDER"
 				sh '''
-					ls
 					pwd
-					python --version
+					ls
 					python3 --version
 					python3 -m venv ./venv
-					cd ./venv/bin && ls
+					source ./venv/bin/activate
+					pip3 install requirements.txt
 				'''
 			}
 		}
