@@ -14,7 +14,10 @@ pipeline {
 					python3 --version
 					python3 -m venv ./venv
 					source ./venv/bin/activate
-					pip3 install requirements.txt
+					pip --version
+					/var/jenkins_home/workspace/configCommander_main/venv/bin/python3 -m pip install --upgrade pip
+					pip --version
+					pip install requirements.txt
 				'''
 			}
 		}
