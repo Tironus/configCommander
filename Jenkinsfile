@@ -12,6 +12,7 @@ pipeline {
 					ls
 					pwd
 					python --version
+					python3 --version
 				'''
 			}
 		}
