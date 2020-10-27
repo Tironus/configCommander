@@ -14,7 +14,7 @@ pipeline {
 					python3 --version
 					python3 -m venv ./venv
 					pip --version
-					pip install -r requirements.txt
+					make install
 				'''
 			}
 		}
