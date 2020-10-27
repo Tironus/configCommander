@@ -14,8 +14,7 @@ pipeline {
 					python --version
 					python3 --version
 					python3 -m venv ./venv
-					ls
-					cd venv && ls
+					cd ./venv/bin && ls
 				'''
 			}
 		}
