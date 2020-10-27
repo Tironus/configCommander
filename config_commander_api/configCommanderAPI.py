@@ -1,5 +1,6 @@
 import sys
 import os
+from models import ConfigResponse, ConfigDeviceInterface
 
 cwd = os.getcwd()
 fmt_path = cwd.split('/')
@@ -16,11 +17,13 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-@app.post("/config_interface", response_model=models.ConfigResponse)
-async def post_config(config_data: models.ConfigDeviceInterface):
+
+@app.post("/config_interface", response_model=ConfigResponse)
+async def post_config(config_data: ConfigDeviceInterface):
     c = configCommander(config_data)
     results, status, msg = c.runConfig()
     return results
+
 
 @app.post("/config_static_routes", response_model=models.ConfigResponse)
 async def post_config(config_data: models.ConfigDeviceRoute):
