@@ -14,6 +14,7 @@ pipeline {
 					python3 --version
 					python3 -m venv ./venv
 					source ./venv/bin/activate
+					export PKG_CONFIG_PATH=libffi.pc
 					pip --version
 					/var/jenkins_home/workspace/configCommander_main/venv/bin/python3 -m pip install --upgrade pip
 					pip --version
