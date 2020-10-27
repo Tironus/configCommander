@@ -1,14 +1,22 @@
 pipeline {
-    agent { docker { image 'python:3.5.1' } }
-    environment {
+	agent any
+	environment {
 		CONFIG_COMMANDER='1.0'
 		APP_PATH="$HOME/configCommander"
 	}
-    stages {
-        stage('build') {
-            steps {
-                sh 'python --version'
-            }
-        }
-    }
+	stages {
+		stage('build') {
+			steps {
+				echo "configCommander version $CONFIG_COMMANDER"
+				sh '''
+					pwd
+					ls
+					python3 --version
+					python3 -m venv ./venv
+					pip --version
+					make install
+				'''
+			}
+		}
+	}
 }
