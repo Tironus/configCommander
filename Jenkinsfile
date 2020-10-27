@@ -9,9 +9,8 @@ pipeline {
 			steps {
 				echo "configCommander version $CONFIG_COMMANDER"
 				sh '''
-					source $HOME/cc_venv/bin/activate
-					cd APP_PATH
-					make test
+					ls
+					pwd
 				'''
 			}
 		}
