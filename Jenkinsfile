@@ -19,6 +19,18 @@ pipeline {
 				'''
 			}
 		}
+		stage('lint') {
+			steps {
+				echo "configCommander version $CONFIG_COMMANDER"
+				sh '''
+					pwd
+					ls
+					python3 --version
+					source ./venv/bin/activate
+					make lint
+				'''
+			}
+		}
 		stage('test') {
 			steps {
 				echo "configCommander version $CONFIG_COMMANDER"
