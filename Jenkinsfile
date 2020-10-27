@@ -12,8 +12,6 @@ pipeline {
 					pwd
 					python3 --version
 					pip --version
-					python3 -m venv ./venv
-					source ./venv/bin/activate
 					make install
 				'''
 			}
