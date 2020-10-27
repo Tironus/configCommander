@@ -6,3 +6,5 @@ black
 jinja2
 pyyaml
 paramiko
+fastapi
+uvicorn
