@@ -11,7 +11,7 @@ pipeline {
 				sh '''
 					ls
 					pwd
-					pip install requirements.txt
+					python --version
 				'''
 			}
 		}
