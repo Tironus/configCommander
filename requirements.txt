@@ -8,3 +8,4 @@ pyyaml
 paramiko
 fastapi
 uvicorn
+pydantic
