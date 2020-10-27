@@ -13,8 +13,9 @@ pipeline {
 					pwd
 					python --version
 					python3 --version
-					python3 -m venv .
+					python3 -m venv ./venv
 					ls
+					cd venv && ls
 				'''
 			}
 		}
