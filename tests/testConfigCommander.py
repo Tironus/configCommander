@@ -76,4 +76,4 @@ def test_find_validation():
 def test_runConfig():
     testConfig = configCommander(payload)
     r1, r2, r3 = testConfig.runConfig()
-    assert r2 == "failed"
+    assert r2 == "success"
