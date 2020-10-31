@@ -5,3 +5,4 @@
 .coverage
 .pyc
 *__pycache__
+venv
