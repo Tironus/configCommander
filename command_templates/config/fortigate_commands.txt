@@ -6,10 +6,9 @@ edit {{ intf.id }}
 set vdom root
 set mode static
 set ip {{ intf.ipv4_address }}/{{ intf.ipv4_prefix_len }}
-set allowaccess
-{%- for proto in intf.allow_access -%}
-{{ proto }}
-{%- endfor %}
+{% set spc = joiner("\n") %}
+set allowaccess{% for proto in intf.allow_access %} {{ proto }}{% endfor %}
+{{ spc() }}
 end
 {% endfor %}
 {%- for route in params.static_route -%}

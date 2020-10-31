@@ -21,24 +21,25 @@ class commandGenerator():
 
         if 'static_route' in self.config['device']['configuration']:
             params = cp.static_route_config(params)
-
         output = template.render(params=params)
         command_list.append(output)
         self.commands = command_list
 
     def generateCommands(self):
-        cwd = os.getcwd()
+        template_path = None
+        template_name = None
+        app_dir = os.getenv("APP_DIR")
         if self.config_type == 'configure':
-            template_path = f"{cwd}/command_templates/config"
-            template_name = f"{self.config['device']['device_type']}_commands.txt"
+            template_path = f"{app_dir}/command_templates/config"
+            template_name = f"{self.config['device']['device_type']}_base"
         elif self.config_type == 'backout':
-            template_path = f"{cwd}/command_templates/backout"
+            template_path = f"{app_dir}/command_templates/backout"
             template_name = f"{self.config['device']['device_type']}_backout_commands.txt"
         else:
             print(f'invalid config type: {self.config_type}')
 
         file_loader = FileSystemLoader(template_path)
-        env = Environment(loader=file_loader)
+        env = Environment(loader=file_loader, keep_trailing_newline=True, trim_blocks=True)
         template = env.get_template(template_name)
 
         if self.config['device']['device_type'] == 'fortigate':

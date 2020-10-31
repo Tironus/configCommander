@@ -1,0 +1,10 @@
+config vdom
+edit root
+config system interface
+edit {{ params.id }}
+set vdom root
+set mode static
+set allowaccess http https ssh
+set ip {{ params.ipv4_address }}/{{ params.ipv4_prefix_len }}
+end
+end

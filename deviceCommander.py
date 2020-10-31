@@ -61,6 +61,5 @@ class DeviceConfig():
             if len(stderr_list) > 0:
                 device.cmd_status(cmd, "error", stderr_list, self.cmd_validation_regex)
                 print(stderr_list)
-                print(stdout)
 
         self.cmd_results = device.commands

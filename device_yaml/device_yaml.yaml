@@ -1,6 +1,6 @@
 ---
 - device_type: "fortigate"
-  regex_validation: ".*(error|fail|illegal|MUST be set|Can't)"
+  regex_validation: ".*(error|fail|illegal|MUST be set|Can't|Make sure)"
   username: "admin"
   password: "admin"
 - device_type: "cisco-ios"

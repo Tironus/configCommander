@@ -1,15 +1,11 @@
 config vdom
 edit root
-{% for intf in params.interface -%}
 config system interface
-edit {{ intf.id }}
+edit {{ params.id }}
 unset ip
 unset allowaccess
 end
-{% endfor %}
-{%- for route in params.static_route -%}
 config router static
-delete {{ route.id }}
+delete {{ params.id }}
 end
-{% endfor %}
 end

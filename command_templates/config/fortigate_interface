@@ -1,0 +1,10 @@
+{% extends "fortigate_base" %}
+{% block interface %}
+config system interface
+edit {{ params.id }}
+set vdom root
+set mode static
+set allowaccess icmp http https ssh
+set ip {{ params.ipv4_address }}/{{ params.ipv4_prefix_len }}
+end
+{% endblock %}

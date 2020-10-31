@@ -1,0 +1,13 @@
+config vdom
+edit root
+{% block interface %}{% endblock %}
+end
+{%- for route in params.static_route -%}
+config router static
+edit {{ route.id }}
+set dst {{ route.dst_ip }}/{{ route.dst_prefix_len }}
+set device {{ route.device }}
+set gateway {{ route.gateway }}
+end
+{% endfor %}
+end

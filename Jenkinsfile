@@ -22,7 +22,6 @@ pipeline {
 				sh '''
 					pwd
 					python3 --version
-					source ./venv/bin/activate
 					make lint
 				'''
 			}
@@ -33,7 +32,6 @@ pipeline {
 				sh '''
 					pwd
 					python3 --version
-					source ./venv/bin/activate
 					make test
 				'''
 			}

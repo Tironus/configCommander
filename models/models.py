@@ -1,13 +1,13 @@
 import enum
 from pydantic import BaseModel
-from typing import List, Optional
+from typing import List, Optional, Dict
 
 
 class AllowAccess(enum.Enum):
-    ssh = '1'
-    http = '2'
-    https = '3'
-    snmp = '4'
+    ssh = 'ssh'
+    http = 'http'
+    https = 'https'
+    snmp = 'snmp'
 
 
 class DevicePorts(enum.Enum):
@@ -17,14 +17,18 @@ class DevicePorts(enum.Enum):
     port4 = 'port4'
 
 
-class InterfaceValues(BaseModel):
+class InterfaceParams(BaseModel):
     id: str
     ipv4_address: str
     ipv4_prefix_len: int
     allow_access: List[AllowAccess]
 
 
-class StaticRouteValues(BaseModel):
+class InterfaceValues(BaseModel):
+    interface: InterfaceParams
+
+
+class StaticRouteParams(BaseModel):
     id: str
     dst_ip: str
     dst_prefix_len: str
@@ -32,26 +36,28 @@ class StaticRouteValues(BaseModel):
     gateway: str
 
 
-class ConfigInteface(BaseModel):
+class StaticRouteValues(BaseModel):
+    static_route: StaticRouteParams
+
+
+class ConfigDevice(BaseModel):
     hostname: str
     username: str
     password: str
     device_type: str
     firmware_version: str
+
+
+class ConfigInterface(ConfigDevice):
     configuration: Optional[InterfaceValues]
 
 
-class ConfigRoutes(BaseModel):
-    hostname: str
-    username: str
-    password: str
-    device_type: str
-    firmware_version: str
+class ConfigRoutes(ConfigDevice):
     configuration: Optional[StaticRouteValues]
 
 
 class ConfigDeviceInterface(BaseModel):
-    device: Optional[ConfigInteface]
+    device: Optional[ConfigInterface]
 
 
 class ConfigDeviceRoute(BaseModel):
@@ -59,6 +65,6 @@ class ConfigDeviceRoute(BaseModel):
 
 
 class ConfigResponse(BaseModel):
-    restults: List
+    results: Dict
     status: str
     msg: str

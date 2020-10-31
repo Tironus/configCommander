@@ -3,3 +3,5 @@
 /cc_venv/*
 .venv
 .coverage
+.pyc
+*__pycache__
