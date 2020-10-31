@@ -31,4 +31,4 @@ async def post_config(config_data: models.ConfigDeviceInterface):
 async def post_config(config_data: models.ConfigDeviceRoute):
     c = configCommander(config_data)
     results, status, msg = c.runConfig()
-    return results
+    return models.ConfigResponse(results=results, status=status, msg=msg)

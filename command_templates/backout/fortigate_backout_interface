@@ -1,0 +1,6 @@
+{% extends "fortigate_backout_base" %}
+config system interface
+edit {{ params.id }}
+unset ip
+unset allowaccess
+end

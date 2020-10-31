@@ -1,4 +1,4 @@
-from commandGenerator import commandGenerator
+import commandGenerator
 
 payload = {
     "device": {
@@ -25,13 +25,14 @@ payload = {
 }
 
 def test_update_config_type():
-    testGenerator = commandGenerator(payload, 'configure')
+    testGenerator = commandGenerator.commandGenerator(payload, 'configure')
     testGenerator.update_config_type('test')
     assert "test" in testGenerator.config_type
 
 def test_generate_commands():
-    testGenerator = commandGenerator(payload, 'configure')
+    testGenerator = commandGenerator.commandGenerator(payload, 'configure')
     results = testGenerator.generateCommands()
+    print(results)
     assert results is not []
 
 if __name__ == "__main__":

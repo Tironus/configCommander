@@ -1,0 +1,4 @@
+{% extends "fortigate_backout_base" %}
+config router static
+delete {{ params.id }}
+end
