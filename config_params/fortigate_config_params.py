@@ -4,12 +4,10 @@ class fortigate_config():
 
     def interface_config(self, params):
         cfg = self.config["device"]["configuration"]["interface"]
-        print(cfg)
         intf_params = {
-            "id": intf["id"],
-            "ipv4_address": intf["ipv4_address"],
-            "ipv4_prefix_len": intf["ipv4_prefix_len"],
-            "allow_access": intf["allow_access"]
+            "id": cfg["id"],
+            "ipv4_address": cfg["ipv4_address"],
+            "ipv4_prefix_len": cfg["ipv4_prefix_len"],
         }
         return intf_params
 
@@ -17,11 +15,11 @@ class fortigate_config():
         params['static_route'] = []
         sr = self.config['device']['configuration']['static_route']
         route_params = {
-            "id": static_route["id"],
-            "dst_ip": static_route["dst_ip"],
-            "dst_prefix_len": static_route["dst_prefix_len"],
-            "device": static_route["device"],
-            "gateway": static_route["gateway"]
+            "id": sr["id"],
+            "dst_ip": sr["dst_ip"],
+            "dst_prefix_len": sr["dst_prefix_len"],
+            "device": sr["device"],
+            "gateway": sr["gateway"]
         }
         params['static_route'].append(route_params)
         return params

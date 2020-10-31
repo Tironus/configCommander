@@ -2,7 +2,7 @@ from commandGenerator import commandGenerator
 
 payload = {
     "device": {
-        "hostname": "71.229.230.0",
+        "hostname": "192.168.20.55",
         "username": "admin",
         "password": "admin",
         "device_type": "fortigate",
