@@ -7,7 +7,7 @@ class cmd_object():
         self.hostname = hostname
         self.commands = {}
         cwdir = os.getcwd()
-        if "tests" in os.getcwd():
+        if "tests" in os.getcwd() or "api" in os.getcwd():
             split_dir = cwdir.split('/')
             split_dir.pop(-1)
             cwdir = ('/').join(split_dir)

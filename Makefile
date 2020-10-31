@@ -1,6 +1,7 @@
 install:
 	pip3 install --upgrade pip && \
-	pip3 install -r requirements.txt
+	pip3 install -r requirements.txt && \
+	export APP_DIR=$(pwd)
 
 test:
 	python3 -m pytest -vv --cov-report term-missing --cov=tests \

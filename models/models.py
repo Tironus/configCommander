@@ -21,7 +21,6 @@ class InterfaceParams(BaseModel):
     id: str
     ipv4_address: str
     ipv4_prefix_len: int
-    allow_access: List[AllowAccess]
 
 
 class InterfaceValues(BaseModel):
@@ -32,7 +31,7 @@ class StaticRouteParams(BaseModel):
     id: str
     dst_ip: str
     dst_prefix_len: str
-    device: List[DevicePorts]
+    device: str
     gateway: str
 
 
