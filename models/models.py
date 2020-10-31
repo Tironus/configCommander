@@ -66,4 +66,4 @@ class ConfigDeviceRoute(BaseModel):
 class ConfigResponse(BaseModel):
     results: Dict
     status: str
-    msg: str
+    msg: Optional[str]

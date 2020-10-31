@@ -23,6 +23,7 @@ app = FastAPI()
 async def post_config(config_data: models.ConfigDeviceInterface):
     c = configCommander(config_data)
     results, status, msg = c.runConfig()
+    print(results, status, msg)
     return models.ConfigResponse(results=results, status=status, msg=msg)
 
 
