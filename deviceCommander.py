@@ -5,6 +5,13 @@ class cmd_object():
     def __init__(self, hostname):
         self.hostname = hostname
         self.commands = {}
+        cwdir = os.getcwd()
+        if "tests" in os.getcwd():
+            split_dir = cwdir.split('/')
+            split_dir.pop(-1)
+            cwdir = ('/').join(split_dir)
+
+        os.environ['APP_DIR'] = cwdir
 
     def cmd_validator(self, output, regex):
         for line in output:

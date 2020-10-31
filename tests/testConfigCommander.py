@@ -1,8 +1,8 @@
-from configCommander import configCommander
+import configCommander
 
 payload = {
     "device": {
-        "hostname": "71.229.230.0",
+        "hostname": "192.168.20.55",
         "username": "admin",
         "password": "admin",
         "device_type": "fortigate",
@@ -69,11 +69,15 @@ payload = {
 }
 
 def test_find_validation():
-    testConfig = configCommander(payload)
+    testConfig = configCommander.configCommander(payload)
     results = testConfig.find_validation()
     assert results is not None
 
 def test_runConfig():
-    testConfig = configCommander(payload)
+    testConfig = configCommander.configCommander(payload)
     r1, r2, r3 = testConfig.runConfig()
     assert r2 == "success"
+
+if __name__ == "__main__":
+    test_find_validation()
+    test_runConfig()

@@ -80,3 +80,4 @@ def test_generate_commands():
 
 if __name__ == "__main__":
     test_generate_commands()
+    test_update_config_type()
