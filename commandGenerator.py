@@ -2,11 +2,20 @@ from jinja2 import Environment, FileSystemLoader
 from config_params import fortigate_config_params
 import os
 
+
 class commandGenerator():
+
     def __init__(self, config, config_type):
         self.config = config
         self.config_type = config_type
         self.commands = []
+        cwdir = os.getcwd()
+        if "tests" in os.getcwd():
+            split_dir = cwdir.split('/')
+            split_dir.pop(-1)
+            cwdir = ('/').join(split_dir)
+
+        os.environ['APP_DIR'] = cwdir
 
     def update_config_type(self, config_type):
         self.config_type = config_type
@@ -47,3 +56,5 @@ class commandGenerator():
 
         return self.commands
 
+if __name__ == "__main__":
+    cg = commandGenerator(None, None)
