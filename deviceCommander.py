@@ -1,5 +1,6 @@
 import paramiko
 import re
+import os
 
 class cmd_object():
     def __init__(self, hostname):

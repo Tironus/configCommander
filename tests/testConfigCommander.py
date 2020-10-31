@@ -1,4 +1,5 @@
 import configCommander
+from unittest.mock import MagicMock
 
 payload = {
     "device": {
