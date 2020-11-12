@@ -33,10 +33,10 @@ jobs:
         sudo docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: docker build
       run: |
-        sudo docker build ./docker -t tgionfriddo/config_commander:1.1
+        sudo docker build ./docker -t tgionfriddo/config_commander:1.2
     - name: docker push
       run: |
-        sudo docker push tgionfriddo/config_commander:1.1
+        sudo docker push tgionfriddo/config_commander:1.2
     - name: deploy with helm
       run: |
         echo dvrl@b | su root -c "cd /root/configCommander && helm upgrade -f helm/values.yaml ccommander ./helm"
