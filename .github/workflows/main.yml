@@ -36,4 +36,4 @@ jobs:
         sudo docker push tgionfriddo/config_commander:1.1
     - name: helm upgrade
       run: |
-        sudo make upgrade
+        make upgrade
