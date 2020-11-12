@@ -15,7 +15,7 @@ lint:
 
 upgrade:
 	sudo su
-	helm upgrade -f helm/values.yaml ccommander ./helm
+	sudo helm upgrade -f helm/values.yaml ccommander ./helm
 
 all:
 	install lint test
