@@ -2,7 +2,7 @@ FROM        docker.io/ubuntu:latest
 
 ENV         container docker
 
-COPY        ../../configCommander ./configCommander
+COPY        ./configCommander ./configCommander
 
 RUN         apt update && \
             apt install -y build-essential python3 python3-pip && \
