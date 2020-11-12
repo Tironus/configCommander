@@ -15,22 +15,22 @@ jobs:
 #        python-version: 3.7
     - name: Install dependencies
       run: |
-        sudo make install
+        make install
     - name: Lint with pylint
       run: |
-        sudo make lint
+        make lint
     - name: Test with pytest
       run: |
-        sudo make test
+        make test
     - name: docker login
       env:
         DOCKER_USER: ${{ secrets.DOCKER_USER }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       run: |
-        sudo docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: docker build
       run: |
-        sudo docker build ./docker -t tgionfriddo/config_commander:1.1
+        docker build ./docker -t tgionfriddo/config_commander:1.1
     - name: docker push
       run: |
-        sudo docker push tgionfriddo/config_commander:1.1
+        docker push tgionfriddo/config_commander:1.1
