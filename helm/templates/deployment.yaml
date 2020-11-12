@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ccommander
+  labels:
+    app: ccommander
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ccommander
+  template:
+    metadata:
+      labels:
+        app: ccommander
+    spec:
+      containers:
+        - name: ccommander
+          image: tgionfriddo/config_commander:1.0
+          ports:
+            - containerPort: 8000
