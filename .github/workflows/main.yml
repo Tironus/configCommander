@@ -10,7 +10,7 @@ jobs:
     steps:
     - name: update permissions on runner
       run: |
-        echo dvrl@b | sudo -S chmod -R github:github /home/github/actions-runner/_work/configCommander/
+        echo dvrl@b | sudo -S chown -R github:github /home/github/actions-runner/_work/configCommander/
     - uses: actions/checkout@v2
 #    - name: Set up Python 3.7
 #      uses: actions/setup-python@v1
