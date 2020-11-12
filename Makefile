@@ -17,6 +17,8 @@ helm_install:
 	helm install -f helm/values.yaml ccommander ./helm
 
 helm_upgrade:
+	ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@localhost
+    cd /root/configCommander
 	helm upgrade -f helm/values.yaml ccommander ./helm
 
 helm_uninstall:
