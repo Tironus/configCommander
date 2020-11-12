@@ -14,7 +14,7 @@ lint:
 	pylint --disable=R,C,E1120 deviceCommander.py
 
 upgrade:
-	helm upgrade -f helm/values.yaml ccommander ./helm
+	sudo helm upgrade -f helm/values.yaml ccommander ./helm
 
 all:
 	install lint test
