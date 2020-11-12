@@ -10,6 +10,11 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "1.2"
 
+redis_image:
+  repository: redis
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
@@ -40,6 +45,11 @@ service:
   type: NodePort
   port: 8000
   nodePort: 31081
+
+redis_service:
+  type: NodePort
+  port: 6379
+  nodePort: 31082
 
 ingress:
   enabled: false
