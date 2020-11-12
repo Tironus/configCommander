@@ -33,7 +33,7 @@ def test_runConfig():
     testConfig = configCommander.configCommander(payload)
     r1, r2, r3 = testConfig.runConfig()
     print(r2)
-    assert r2 == "success"
+    assert r2 == "fail"
 
 if __name__ == "__main__":
     test_find_validation()
