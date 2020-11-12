@@ -37,3 +37,6 @@ jobs:
     - name: helm upgrade
       run: |
         make upgrade
+    - name: remove repo on runner
+      run: |
+        echo dvrl@b | sudo rm -rf /home/github/actions-runner/_work/configCommander/
