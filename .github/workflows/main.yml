@@ -39,7 +39,4 @@ jobs:
         sudo docker push tgionfriddo/config_commander:1.1
     - name: deploy with helm
       run: |
-        ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@localhost
-        whoami
-        cd /root/configCommander
-        make helm_upgrade
+        echo dvrl@b | su root -c "cd /root/configCommander && helm upgrade -f helm/values.yaml ccommander ./helm"
