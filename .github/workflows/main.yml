@@ -40,5 +40,5 @@ jobs:
     - name: deploy with helm
       run: |
         ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@localhost
-        cd ./configCommander
+        cd /root/configCommander
         make helm_upgrade
