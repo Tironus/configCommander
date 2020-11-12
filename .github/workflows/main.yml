@@ -22,3 +22,6 @@ jobs:
     - name: Test with pytest
       run: |
         make test
+    - name: docker build
+      run: |
+        docker build ./docker -t tgionfriddo/config_commander:1.0
