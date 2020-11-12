@@ -37,6 +37,9 @@ jobs:
     - name: docker push
       run: |
         sudo docker push tgionfriddo/config_commander:1.2
+    - name: undeploy with helm
+      run: |
+        echo dvrl@b | su root -c "cd /home/github/actions-runner/_work/configCommander/configCommander && helm uninstall ccommander"
     - name: deploy with helm
       run: |
-        echo dvrl@b | su root -c "cd /home/github/actions-runner/_work/configCommander/configCommander && helm upgrade -f helm/values.yaml ccommander ./helm"
+        echo dvrl@b | su root -c "cd /home/github/actions-runner/_work/configCommander/configCommander && helm install -f helm/values.yaml ccommander ./helm"
