@@ -36,7 +36,7 @@ jobs:
         sudo docker push tgionfriddo/config_commander:1.1
     - name: helm upgrade
       run: |
-        sudo make upgrade
+        make upgrade
     - name: remove repo on runner
       run: |
         echo dvrl@b | sudo rm -rf /home/github/actions-runner/_work/configCommander/
