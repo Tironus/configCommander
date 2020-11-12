@@ -1,9 +1,9 @@
-name: Python CI Steps Github Actions
+name: deploy workflow
 
 on: [workflow_dispatch]
 
 jobs:
-  build:
+  deploy:
     runs-on: self-hosted
 
     steps:
