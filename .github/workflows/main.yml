@@ -39,4 +39,5 @@ jobs:
         sudo docker push tgionfriddo/config_commander:1.1
     - name: helm upgrade
       run: |
-        make upgrade
+        sudo su
+        helm upgrade -f helm/values.yaml ccommander ./helm
