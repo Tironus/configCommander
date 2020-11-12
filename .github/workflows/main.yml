@@ -9,6 +9,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      run: |
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: Set up Python 3.7
       uses: actions/setup-python@v1
       with:
@@ -22,6 +24,13 @@ jobs:
     - name: Test with pytest
       run: |
         make test
+    - name: docker login
+      env:
+        DOCKER_USER: ${{ secrets.DOCKER_USER }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
     - name: docker build
       run: |
-        docker build ./docker -t tgionfriddo/config_commander:1.0
+        docker build ./docker -t tgionfriddo/config_commander:1.1
+    - name: docker push
+      run: |
+        docker push tgionfriddo/config_commander:1.1
