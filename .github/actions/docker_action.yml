@@ -1,6 +1,0 @@
-# docker_action.yml
-name: 'ConfigCommander'
-description: 'Run the configCommander Container'
-runs:
-  using: 'docker'
-  image: 'tgionfriddo/config_commander:1.0'
