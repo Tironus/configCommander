@@ -1,4 +1,4 @@
-name: Python CI Steps Github Actions
+name: ci workflow
 
 on: [push]
 
