@@ -5,17 +5,14 @@ on: [push]
 jobs:
   build:
 
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
-    - name: update permissions on runner
-      run: |
-        echo dvrl@b | sudo -S chown -R github:github /home/github/actions-runner/_work/configCommander/
     - uses: actions/checkout@v2
-#    - name: Set up Python 3.7
-#      uses: actions/setup-python@v1
-#      with:
-#        python-version: 3.7
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
     - name: Install dependencies
       run: |
         sudo make install
@@ -37,9 +34,4 @@ jobs:
     - name: docker push
       run: |
         sudo docker push tgionfriddo/config_commander:1.2
-    - name: undeploy with helm
-      run: |
-        echo dvrl@b | su root -c "cd /home/github/actions-runner/_work/configCommander/configCommander && helm uninstall ccommander"
-    - name: deploy with helm
-      run: |
-        echo dvrl@b | su root -c "cd /home/github/actions-runner/_work/configCommander/configCommander && helm install -f helm/values.yaml ccommander ./helm"
+
