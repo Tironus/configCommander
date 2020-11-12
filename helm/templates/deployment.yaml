@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: ccommander
-          image: tgionfriddo/config_commander:1.0
+          image: {{ .Values.image.repository}}:{{ .Values.image.tag }}
           ports:
             - containerPort: 8000
