@@ -10,7 +10,7 @@ jobs:
     steps:
     - name: remove repo on runner
       run: |
-        echo dvrl@b | sudo rm -rf /home/github/deployment/configCommander
+        echo dvrl@b | sudo rm -rf /home/github/actions-runner/_work/configCommander/
     - uses: actions/checkout@v2
 #    - name: Set up Python 3.7
 #      uses: actions/setup-python@v1
