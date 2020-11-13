@@ -32,3 +32,8 @@ async def post_config(config_data: models.ConfigDeviceRoute):
     c = configCommander(config_data)
     results, status, msg = c.runConfig()
     return models.ConfigResponse(results=results, status=status, msg=msg)
+
+
+@app.post("/health", response_model=models.HealthResponse)
+async def get_config():
+    return models.HealthResponse(status="ok", msg="health ok")
