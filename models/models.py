@@ -45,12 +45,9 @@ class Device(BaseModel):
     password: str
     device_type: str
     firmware_version: str
-    configuration: Dict[
-        str,
-        Union[
-            Optional[InterfaceValues],
-            Optional[StaticRouteValues]
-        ]
+    configuration: Union[
+        Optional[InterfaceValues],
+        Optional[StaticRouteValues]
     ]
 
 
