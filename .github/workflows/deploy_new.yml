@@ -1,0 +1,16 @@
+name: deploy workflow
+
+on: [workflow_dispatch]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: update permissions on runner
+        run: |
+          echo dvrl@b | sudo -S chown -R github:github /home/github/actions-runner/_work/configCommander/
+      - uses: actions/checkout@v2
+      - name: deploy with helm
+        run: |
+          echo dvrl@b | su root -c "cd /home/github/actions-runner/_work/configCommander/configCommander && helm install -f helm/values.yaml ccommander ./helm"
