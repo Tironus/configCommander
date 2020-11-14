@@ -1,6 +1,6 @@
 import enum
 from pydantic import BaseModel
-from typing import List, Optional, Dict
+from typing import List, Optional, Dict, Union
 
 
 class AllowAccess(enum.Enum):
@@ -24,7 +24,7 @@ class InterfaceParams(BaseModel):
 
 
 class InterfaceValues(BaseModel):
-    interface: InterfaceParams
+    interfaces: List[InterfaceParams]
 
 
 class StaticRouteParams(BaseModel):
@@ -39,7 +39,7 @@ class StaticRouteValues(BaseModel):
     static_route: StaticRouteParams
 
 
-class ConfigDevice(BaseModel):
+class Device(BaseModel):
     hostname: str
     username: str
     password: str
@@ -47,26 +47,20 @@ class ConfigDevice(BaseModel):
     firmware_version: str
 
 
-class ConfigInterface(ConfigDevice):
-    configuration: Optional[InterfaceValues]
-
-
-class ConfigRoutes(ConfigDevice):
-    configuration: Optional[StaticRouteValues]
-
-
-class ConfigDeviceInterface(BaseModel):
-    device: Optional[ConfigInterface]
-
-
-class ConfigDeviceRoute(BaseModel):
-    device: Optional[ConfigRoutes]
+class Config(Device):
+    configuration: Dict[
+        Union[
+            Optional[InterfaceValues],
+            Optional[StaticRouteValues]
+        ]
+    ]
 
 
 class ConfigResponse(BaseModel):
     results: Dict
     status: str
     msg: Optional[str]
+
 
 class HealthResponse(BaseModel):
     status: str

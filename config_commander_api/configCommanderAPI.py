@@ -19,18 +19,11 @@ from fastapi import FastAPI
 app = FastAPI()
 
 
-@app.post("/config_interface", response_model=models.ConfigResponse)
-async def post_config(config_data: models.ConfigDeviceInterface):
+@app.post("/config_device", response_model=models.ConfigResponse)
+async def post_config(config_data: models.Device):
     c = configCommander(config_data)
     results, status, msg = c.runConfig()
     print(results, status, msg)
-    return models.ConfigResponse(results=results, status=status, msg=msg)
-
-
-@app.post("/config_static_routes", response_model=models.ConfigResponse)
-async def post_config(config_data: models.ConfigDeviceRoute):
-    c = configCommander(config_data)
-    results, status, msg = c.runConfig()
     return models.ConfigResponse(results=results, status=status, msg=msg)
 
 

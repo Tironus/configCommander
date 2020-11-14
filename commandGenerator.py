@@ -26,27 +26,34 @@ class commandGenerator():
         template_name = None
 
         cp = fortigate_config_params.fortigate_config(self.config)
-        if 'interface' in self.config['device']['configuration']:
-            params = cp.interface_config(self.config['device']['configuration']['interface'])
+        if len(self.config['device']['configuration']['interfaces']) > 0:
+
+            params['interfaces'] = self.config['device']['configuration']['interfaces']
             if self.config_type == 'configure':
                 template_name = f"{self.config['device']['device_type']}_interface"
             elif self.config_type == 'backout':
                 template_name = f"{self.config['device']['device_type']}_backout_interface"
 
-        if 'static_route' in self.config['device']['configuration']:
-            params = cp.static_route_config(self.config['device']['configuration']['static_route'])
+            command_list.append(self.jinja_process(template_path, template_name, params))
+
+        if len(self.config['device']['configuration']['static_routes']) > 0:
+            params['static_routes'] = self.config['device']['configuration']['static_routes']
             if self.config_type == 'configure':
                 template_name = f"{self.config['device']['device_type']}_static_route"
             elif self.config_type == 'backout':
                 template_name = f"{self.config['device']['device_type']}_backout_static_route"
 
+            command_list.append(self.jinja_process(template_path, template_name, params))
+
+        self.commands = command_list
+
+    def jinja_process(self, template_path, template_name, params):
         file_loader = FileSystemLoader(template_path)
         env = Environment(loader=file_loader, keep_trailing_newline=True, trim_blocks=True)
         template = env.get_template(template_name)
         output = template.render(params=params)
-        command_list.append(output)
+        return output
 
-        self.commands = command_list
 
     def generateCommands(self):
         template_path = None

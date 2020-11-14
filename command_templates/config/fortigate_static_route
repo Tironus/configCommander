@@ -1,9 +1,12 @@
 {% extends "fortigate_base" %}
 {% block static_route %}
 config router static
-edit {{ params.id }}
-set dst {{ params.dst_ip }}/{{ params.dst_prefix_len }}
-set device {{ params.device }}
-set gateway {{ params.gateway }}
+{% for static_route in params.static_routes %}
+edit {{ static_route.id }}
+set dst {{ static_route.dst_ip }}/{{ static_route.dst_prefix_len }}
+set device {{ static_route.device }}
+set gateway {{ static_route.gateway }}
+next
+{% endfor %}
 end
 {% endblock %}

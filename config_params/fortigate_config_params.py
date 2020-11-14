@@ -3,13 +3,15 @@ class fortigate_config():
         self.config = config
 
     def interface_config(self, params):
-        cfg = self.config["device"]["configuration"]["interface"]
-        intf_params = {
-            "id": cfg["id"],
-            "ipv4_address": cfg["ipv4_address"],
-            "ipv4_prefix_len": cfg["ipv4_prefix_len"],
-        }
-        return intf_params
+        params['interfaces'] = []
+        for intf in params:
+            intf_params = {
+                "id": intf["id"],
+                "ipv4_address": intf["ipv4_address"],
+                "ipv4_prefix_len": intf["ipv4_prefix_len"],
+            }
+            params['interfaces'].append(intf_params)
+        return params
 
     def static_route_config(self, params):
         params['static_route'] = []
