@@ -39,7 +39,7 @@ class StaticRouteValues(BaseModel):
     static_routes: List[StaticRouteParams]
 
 
-class Device(BaseModel):
+class DeviceAuth(BaseModel):
     hostname: str
     username: str
     password: str
@@ -51,6 +51,10 @@ class Device(BaseModel):
             StaticRouteValues
         ]
     ]
+
+
+class Device(BaseModel):
+    device: DeviceAuth
 
 
 class ConfigResponse(BaseModel):
