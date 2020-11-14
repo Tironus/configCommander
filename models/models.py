@@ -45,9 +45,11 @@ class Device(BaseModel):
     password: str
     device_type: str
     firmware_version: str
-    configuration: Union[
-        Optional[List[InterfaceValues]],
-        Optional[List[StaticRouteValues]]
+    configuration: Optional[
+        Union[
+            List[InterfaceValues],
+            List[StaticRouteValues]
+        ]
     ]
 
 
