@@ -36,7 +36,7 @@ class StaticRouteParams(BaseModel):
 
 
 class StaticRouteValues(BaseModel):
-    static_route: List[StaticRouteParams]
+    static_routes: List[StaticRouteParams]
 
 
 class Device(BaseModel):

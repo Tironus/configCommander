@@ -30,8 +30,8 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: docker build
       run: |
-        docker build ./docker -t tgionfriddo/config_commander:1.5.3
+        docker build ./docker -t tgionfriddo/config_commander:1.5.4
     - name: docker push
       run: |
-        docker push tgionfriddo/config_commander:1.5.3
+        docker push tgionfriddo/config_commander:1.5.4
 
