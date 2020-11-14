@@ -49,6 +49,7 @@ class Device(BaseModel):
 
 class Config(Device):
     configuration: Dict[
+        str,
         Union[
             Optional[InterfaceValues],
             Optional[StaticRouteValues]
