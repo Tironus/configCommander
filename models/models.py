@@ -45,9 +45,6 @@ class Device(BaseModel):
     password: str
     device_type: str
     firmware_version: str
-
-
-class Config(Device):
     configuration: Dict[
         str,
         Union[

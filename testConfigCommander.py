@@ -15,17 +15,17 @@ payload = {
                 {
                     "id": "port5",
                     "ipv4_address": "192.168.5.5",
-                    "ipv4_prefix_len": "24",
+                    "ipv4_prefix_len": "24"
                 },
                 {
                     "id": "port6",
                     "ipv4_address": "192.168.6.6",
-                    "ipv4_prefix_len": "24",
+                    "ipv4_prefix_len": "24"
                 },
                 {
                     "id": "port7",
                     "ipv4_address": "192.168.7.7",
-                    "ipv4_prefix_len": "24",
+                    "ipv4_prefix_len": "24"
                 }
             ],
             "static_routes": [
