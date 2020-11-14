@@ -6,7 +6,6 @@ import os
 
 class configCommander():
     def __init__(self, config):
-        print(config)
         if isinstance(config, dict):
             self.new_config = config
         else:

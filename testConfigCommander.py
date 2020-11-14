@@ -74,7 +74,7 @@ test_api = {
   }
 }
 
-c = configCommander(payload)
+c = configCommander.configCommander(payload)
 ret, status, msg = c.runConfig()
 
 

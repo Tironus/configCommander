@@ -5,7 +5,10 @@ import os
 class commandGenerator():
 
     def __init__(self, config, config_type):
-        self.config = config
+        if isinstance(config, dict):
+            self.config = config
+        else:
+            self.config = config.dict()
         self.config_type = config_type
         self.commands = []
         cwdir = os.getcwd()
@@ -24,7 +27,7 @@ class commandGenerator():
         command_list = []
         template_name = None
 
-        if len(self.config['device']['configuration']['interfaces']) > 0:
+        if "interfaces" in self.config['device']['configuration'].keys():
 
             params['interfaces'] = self.config['device']['configuration']['interfaces']
             if self.config_type == 'configure':
@@ -33,8 +36,8 @@ class commandGenerator():
                 template_name = f"{self.config['device']['device_type']}_backout_interface"
 
             command_list.append(self.jinja_process(template_path, template_name, params))
-
-        if len(self.config['device']['configuration']['static_routes']) > 0:
+        print(self.config)
+        if "static_routes" in self.config['device']['configuration'].keys():
             params['static_routes'] = self.config['device']['configuration']['static_routes']
             if self.config_type == 'configure':
                 template_name = f"{self.config['device']['device_type']}_static_route"
