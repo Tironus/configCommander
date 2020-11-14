@@ -36,7 +36,7 @@ class StaticRouteParams(BaseModel):
 
 
 class StaticRouteValues(BaseModel):
-    static_route: StaticRouteParams
+    static_route: List[StaticRouteParams]
 
 
 class Device(BaseModel):
@@ -47,8 +47,8 @@ class Device(BaseModel):
     firmware_version: str
     configuration: Optional[
         Union[
-            List[InterfaceValues],
-            List[StaticRouteValues]
+            InterfaceValues,
+            StaticRouteValues
         ]
     ]
 
