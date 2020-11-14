@@ -25,7 +25,6 @@ class commandGenerator():
         command_list = []
         template_name = None
 
-        cp = fortigate_config_params.fortigate_config(self.config)
         if len(self.config['device']['configuration']['interfaces']) > 0:
 
             params['interfaces'] = self.config['device']['configuration']['interfaces']
