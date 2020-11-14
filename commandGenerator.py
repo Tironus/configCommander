@@ -1,5 +1,4 @@
 from jinja2 import Environment, FileSystemLoader
-from config_params import fortigate_config_params
 import os
 
 
