@@ -10,7 +10,7 @@ payload = {
         "password": "admin",
         "device_type": "fortigate",
         "firmware_version": "5.6.4",
-        "configuration": {
+        "configuration": [{
             "interfaces": [
                 {
                     "id": "port5",
@@ -51,7 +51,7 @@ payload = {
                     "gateway": "192.168.7.70"
                 }
             ]
-        }
+        }]
     }
 }
 

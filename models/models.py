@@ -45,10 +45,10 @@ class DeviceAuth(BaseModel):
     password: str
     device_type: str
     firmware_version: str
-    configuration: Optional[
+    configuration: List[
         Union[
-            InterfaceValues,
-            StaticRouteValues
+            Optional[InterfaceValues],
+            Optional[StaticRouteValues]
         ]
     ]
 
