@@ -27,24 +27,24 @@ class commandGenerator():
         command_list = []
         template_name = None
 
-        if "interfaces" in self.config['device']['configuration'][0].keys():
+        for cfg in self.config['device']['configuration']:
+            if "interfaces" in cfg.keys():
 
-            params['interfaces'] = self.config['device']['configuration'][0]['interfaces']
-            if self.config_type == 'configure':
-                template_name = f"{self.config['device']['device_type']}_interface"
-            elif self.config_type == 'backout':
-                template_name = f"{self.config['device']['device_type']}_backout_interface"
+                params['interfaces'] = self.config['device']['configuration'][0]['interfaces']
+                if self.config_type == 'configure':
+                    template_name = f"{self.config['device']['device_type']}_interface"
+                elif self.config_type == 'backout':
+                    template_name = f"{self.config['device']['device_type']}_backout_interface"
 
-            command_list.append(self.jinja_process(template_path, template_name, params))
-        print(self.config)
-        if "static_routes" in self.config['device']['configuration'][0].keys():
-            params['static_routes'] = self.config['device']['configuration'][0]['static_routes']
-            if self.config_type == 'configure':
-                template_name = f"{self.config['device']['device_type']}_static_route"
-            elif self.config_type == 'backout':
-                template_name = f"{self.config['device']['device_type']}_backout_static_route"
+                command_list.append(self.jinja_process(template_path, template_name, params))
+            if "static_routes" in self.config['device']['configuration'][0].keys():
+                params['static_routes'] = self.config['device']['configuration'][0]['static_routes']
+                if self.config_type == 'configure':
+                    template_name = f"{self.config['device']['device_type']}_static_route"
+                elif self.config_type == 'backout':
+                    template_name = f"{self.config['device']['device_type']}_backout_static_route"
 
-            command_list.append(self.jinja_process(template_path, template_name, params))
+                command_list.append(self.jinja_process(template_path, template_name, params))
 
         self.commands = command_list
 
