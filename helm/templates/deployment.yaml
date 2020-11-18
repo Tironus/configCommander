@@ -64,4 +64,4 @@ spec:
         - name: ccollector
           image: {{ .Values.collector_image.repository}}:{{ .Values.collector_image.tag }}
           ports:
-            - ccollector: 8000
+            - ccollector: 8001

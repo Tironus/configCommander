@@ -41,9 +41,9 @@ metadata:
 spec:
   type: NodePort
   ports:
-    - port: 8080
+    - port: 8082
       targetPort: 8001
-      nodePort: 31080
+      nodePort: 31083
       name: http
   selector:
     app: ccollector
