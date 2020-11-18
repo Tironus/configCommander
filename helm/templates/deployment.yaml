@@ -42,3 +42,26 @@ spec:
           image: {{ .Values.redis_image.repository}}:{{ .Values.redis_image.tag }}
           ports:
             - containerPort: 6379
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ccollector
+  labels:
+    app: ccollector
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ccollector
+  template:
+    metadata:
+      labels:
+        app: ccollector
+    spec:
+      containers:
+        - name: ccollector
+          image: {{ .Values.collector_image.repository}}:{{ .Values.collector_image.tag }}
+          ports:
+            - ccollector: 8000

@@ -30,3 +30,20 @@ spec:
       name: tcp
   selector:
     app: redis
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ccollector-nip
+  labels:
+    app: ccollector
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 8001
+      nodePort: 31080
+      name: http
+  selector:
+    app: ccollector

@@ -10,6 +10,11 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "1.5.6"
 
+collector_image:
+  repository: tgionfriddo/config_collector
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
 redis_image:
   repository: redis
   pullPolicy: IfNotPresent
@@ -45,6 +50,11 @@ service:
   type: NodePort
   port: 8000
   nodePort: 31081
+
+collector_service:
+  type: NodePort
+  port: 8001
+  nodePort: 31080
 
 redis_service:
   type: NodePort
