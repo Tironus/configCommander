@@ -27,9 +27,9 @@ class commandGenerator():
         command_list = []
         template_name = None
 
-        if "interfaces" in self.config['device']['configuration'].keys():
+        if "interfaces" in self.config['device']['configuration'][0].keys():
 
-            params['interfaces'] = self.config['device']['configuration']['interfaces']
+            params['interfaces'] = self.config['device']['configuration'][0]['interfaces']
             if self.config_type == 'configure':
                 template_name = f"{self.config['device']['device_type']}_interface"
             elif self.config_type == 'backout':
@@ -37,8 +37,8 @@ class commandGenerator():
 
             command_list.append(self.jinja_process(template_path, template_name, params))
         print(self.config)
-        if "static_routes" in self.config['device']['configuration'].keys():
-            params['static_routes'] = self.config['device']['configuration']['static_routes']
+        if "static_routes" in self.config['device']['configuration'][0].keys():
+            params['static_routes'] = self.config['device']['configuration'][0]['static_routes']
             if self.config_type == 'configure':
                 template_name = f"{self.config['device']['device_type']}_static_route"
             elif self.config_type == 'backout':
